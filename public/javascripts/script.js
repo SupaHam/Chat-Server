@@ -20,6 +20,7 @@ var PACKETS = {
 // Initialisation
 $(function () {
     $("#title").html(title);
+    $("#version").text(version);
     setupComponents();
     // TODO This doesn't actually work.
     jQuery(document).ready(function ($) {
