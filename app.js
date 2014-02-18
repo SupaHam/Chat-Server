@@ -178,6 +178,8 @@ function setNick(socket, nick) {
     nicks.push(nick);
     socket.emit(chat.PACKETS.NICK_STATUS, 'OK');
     if (oldNick != null) {
+        var index = nicks.indexOf(oldNick);
+        nicks.splice(index, 1);
         broadcastMessage(null, oldNick + " is now known as " + nick + ".", true);
     } else {
         broadcastMessage(null, "User " + nick + " connected.", true);
