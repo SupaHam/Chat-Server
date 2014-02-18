@@ -103,9 +103,9 @@ io.sockets.on('connection', function (socket) {
 function broadcastMessage(socket, message, sendToConsole) {
 
     // Encode message to prevent XSS
-    message = ent.encode(message);
+    var encoded = ent.encode(message);
     
-    var transmit = {date: new Date().toISOString(), nick: socket == null ? null : getNick(socket), message: message};
+    var transmit = {date: new Date().toISOString(), nick: socket == null ? null : getNick(socket), message: encoded};
     if (socket == null) {
         io.sockets.emit(chat.PACKETS.SEND_MESSAGE, transmit);
     } else {
