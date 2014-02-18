@@ -65,12 +65,14 @@ socket.on(PACKETS.SEND_MESSAGE, function (data) {
  * Sends a message of the message's textbox value.
  */
 function sendMessage() {
-    if (messageContainer.val() != "") {
+    
+    var message = $('<div/>').html(messageContainer.val()).text();
+    if (message != "") {
         if (nick == "") {
             $('#modalNick').modal('show');
         } else {
-            socket.emit(PACKETS.SEND_MESSAGE, messageContainer.val());
-            addMessage(messageContainer.val(), "Me", new Date().toISOString(), true);
+            socket.emit(PACKETS.SEND_MESSAGE, message);
+            addMessage(message, "Me", new Date().toISOString(), true);
             messageContainer.val('');
             submitButton.button('loading');
         }
