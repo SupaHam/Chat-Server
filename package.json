@@ -1,0 +1,13 @@
+{
+  "name": "chat-server",
+  "version": "1.0",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "socket.io": "*",
+    "express": "*",
+    "jade": "*"
+  }
+}

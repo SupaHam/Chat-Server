@@ -1,0 +1,87 @@
+doctype html
+html
+  head
+    title
+      | Dat Supa Chat
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+  body
+    block content
+    div.navbar-wrapper
+      div.container
+        div.navbar.navbar-inverse.navbar-static-top(role="navigation")
+          div.container
+            div.navbar-header
+              button.navbar-toggle(type="button", data-toggle="collapse", data-target=".navbar-collapse")
+                span.sr-only Toggle navigation
+              a.navbar-brand(href="#")
+                span#title
+        div#chatEntries
+        div.row#entries
+          input(type='text')#messageInput
+          div.btn-group
+            button.btn#submit(data-loading-text="Send") Send
+            button.btn.dropdown-toggle(data-toggle="dropdown")
+              span.caret
+            ul.dropdown-menu
+              li
+                a#edit(href="", data-toggle="modal", data-target="#modalNick")
+                  span.glyphicon.glyphicon-pencil
+                  |  Change name
+              li
+                a#info(href="", data-toggle="modal", data-target="#modalInfo")
+                  span.glyphicon.glyphicon-info-sign
+                  |  Info
+        div#userCountDiv
+          p There are 
+            span#userCount
+            |  connected user(s). 
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
+    script(src='http://timeago.yarp.com/jquery.timeago.js')
+    script(src='/socket.io/socket.io.js')
+    script(src='/javascripts/bootstrap.min.js')
+    script(src='/javascripts/script.js')
+    script(src='/javascripts/jquery.slimscroll.min.js')
+  div.modal.fade#modalNick(tabindex="-1", role="dialog", aria-labelledby="modalSetNick", aria-hidden="true")
+    div.modal-dialog
+      div.modal-content
+        div.modal-header
+          button.close(type="button", data-dismiss="modal", aria-hidden="true") &times;
+          h3.modal-title#modalSetNick Choose a name
+        div.modal-body
+          p Choose a name:
+          input(type='text')#nickInput
+          div.alert.alert-danger#alertNick
+            b
+              | This name is already used!
+              br
+              | Choose another one.
+          div.alert.alert-danger#errorInsertNick
+            b
+              | Please insert a name.
+        div.modal-footer
+          button.btn.btn-primary#nickSubmit(type="button") Go to the Chat
+  div.modal.fade#modalInfo(tabindex="-1", role="dialog", aria-labelledby="modalDisplayInfo", aria-hidden="true")
+    div.modal-dialog
+      div.modal-content
+        div.modal-header
+          button.close(type="button", data-dismiss="modal", aria-hidden="true") &times;
+          h3 Information about this application
+        div.modal-body.info
+          p   This application has been made with 
+            a(href="http://nodejs.org/") Node.js
+            | , 
+            a(href="http://socket.io/") Socket.io
+            | , 
+            a(href="http://expressjs.com/") Express
+            | , and 
+            a(href="http://jade-lang.com/") Jade
+            | . 
+          p The theme is 
+            a(href="http://twitter.github.com/bootstrap/") Bootstrap 
+            | from 
+            a(href="https://twitter.com/") Twitter 
+            | and 
+            a(href="http://rocha.la/jQuery-slimScroll") SlimScroll
+            | .
+          p Application created by SupaHam.
