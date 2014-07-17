@@ -62,9 +62,9 @@ var io = require('socket.io').listen(server, {
     // Pls no debugging, too verbose.
     log: false
 });
-console.log('Server listening on port ' + port);
 
 server.listen(port);
+console.log('Server listening on port ' + port);
 // User count
 var userCount = 0;
 
